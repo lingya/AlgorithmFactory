@@ -1,3 +1,3 @@
 -----
-this is a alogrithm Factory!
+this is a algorithm Factory!
 -----
