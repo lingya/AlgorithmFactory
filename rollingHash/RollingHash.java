@@ -14,6 +14,7 @@ import java.util.Map;
  * rolling Hash(Rabin-Karp Algorithm)练习
  * 功能：求给定串的anagram 子串
  * 示例：GetAnagram("abcdbcsdaqdbahs","scdcb") --> cdbcs 【Google面试题】
+ * 资料：http://blog.csdn.net/yanghua_kobe/article/details/8914970
  */
 public class RollingHash {
 
