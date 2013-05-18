@@ -20,10 +20,10 @@ import java.util.Map;
  *      result[Y]’=原result[Y]+result[Y-X]+result[Y-2X]+result[Y-3X]+....+result[Y-zX]  (确保Y-zX>=0)
  * 技巧：假设X为10，Y为35 则带入上面的公式为：
  *      result[35]‘+=(result[25]+result[15]+result[5])
- * 	    因为程序运行的逻辑是先更新result[5]'=result[5]
- * 	    接着result[15]'+=result[5]';result[25]'+=result[15]'
- * 	    所以其实，result[25]'=result[25]+result[15]+result[5]
- * 	    可以得出result[35]'+=result[25]'
+ *      因为程序运行的逻辑是先更新result[5]'=result[5]
+ *      接着result[15]'+=result[5]';result[25]'+=result[15]'
+ *      所以其实，result[25]'=result[25]+result[15]+result[5]
+ *      可以得出result[35]'+=result[25]'
  * DP的状态以及状态转移方程：
  *      设F(N,Y)为N种面值的硬币，组合出价值为Y的组合数
  *      可以得出该问题的状态转移方程为：F(N,Y)=sigma(F[N-1,Y-k) 其中：k=0,X,2X,.....,zX(z=Y/X)
