@@ -30,27 +30,27 @@ import java.util.Map;
  */
 public class DP_CoinGroup {
 
-	private static int getGroupNum(int n, int[] coins){
-		if (n<=0){
+	private static int getGroupNum(int n, int[] coins) {
+		if (n <= 0) {
 			throw new IllegalArgumentException("the arg:n is illegal");
 		}
 
-		if (null==coins||coins.length==0){
+		if (null == coins || coins.length == 0) {
 			throw new IllegalArgumentException("the arg:coin can not be null or empty");
 		}
 
-		Map<Integer,Integer> r=new HashMap<Integer, Integer>();
-		r.put(0,1);
+		Map<Integer, Integer> r = new HashMap<Integer, Integer>();
+		r.put(0, 1);
 
-		for (int i=0;i<coins.length;i++)
-			for (int j=0;j<=n;j++){
+		for (int i = 0; i < coins.length; i++)
+			for (int j = 0; j <= n; j++) {
 				if (!r.containsKey(j))
-					r.put(j,0);
+					r.put(j, 0);
 
-				if (!r.containsKey(j+coins[i]))
-					r.put(j+coins[i],0);
+				if (!r.containsKey(j + coins[i]))
+					r.put(j + coins[i], 0);
 
-				r.put(j+coins[i],r.get(j+coins[i])+r.get(j));
+				r.put(j + coins[i], r.get(j + coins[i]) + r.get(j));
 			}
 
 		return r.get(n);
@@ -58,12 +58,12 @@ public class DP_CoinGroup {
 	}
 
 	public static void main(String[] args) {
-		int n=100;
-		int[] coins={1,2,5};
+		int n = 100;
+		int[] coins = {1, 2, 5};
 
-		int groupNum=getGroupNum(n,coins);
+		int groupNum = getGroupNum(n, coins);
 
-		System.out.println("the total group num is:"+groupNum);
+		System.out.println("the total group num is:" + groupNum);
 	}
 
 
