@@ -30,6 +30,12 @@ import java.util.Map;
  */
 public class DP_CoinGroup {
 
+    /**
+     * get total group num for n
+     * @param n the money num
+     * @param coins all coin's category array
+     * @return the total group num
+     */
     private static int getGroupNum(int n, int[] coins) {
         if (n <= 0) {
             throw new IllegalArgumentException("the arg:n is illegal");
