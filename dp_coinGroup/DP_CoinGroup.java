@@ -15,18 +15,20 @@ import java.util.Map;
  *
  * 思路：这是典型的DP，完全背包问题
  *      假设已有 N-1 种面值的硬币，组合出价值为 M 的总组合数为 result[M]
- *      则，新增加一种面值的硬币 X ，我们需要改变价值大于 X 的所有价值的组合数；
- *      设某价值 Y>=x 则，在新增加一种面值为 X 的硬币后，构成价值 Y 的总组合数 result[Y]’
+ *      则，新增加一种面值为 X 的硬币，我们需要改变价值大于 X 的所有价值的组合数；
+ *      设某价值 Y>=X 则，在新增加一种面值为 X 的硬币后，构成价值 Y 的总组合数 result[Y]’
  *      result[Y]’=原result[Y]+result[Y-X]+result[Y-2X]+result[Y-3X]+....+result[Y-zX]  (确保Y-zX>=0)
  * 技巧：假设X为10，Y为35 则带入上面的公式为：
- *      result[35]‘+=(result[25]+result[15]+result[5])
+ *      result[35]'=result[35]+result[25]+result[15]+result[5]
+ *      等价于：
+ *      result[35]'+=(result[25]+result[15]+result[5])      //因为+=运算符是用原值加上右边最后更新自身
  *      因为程序运行的逻辑是先更新result[5]'=result[5]
  *      接着result[15]'+=result[5]';result[25]'+=result[15]'
  *      所以其实，result[25]'=result[25]+result[15]+result[5]
  *      可以得出result[35]'+=result[25]'
  * DP的状态以及状态转移方程：
  *      设F(N,Y)为N种面值的硬币，组合出价值为Y的组合数
- *      可以得出该问题的状态转移方程为：F(N,Y)=sigma(F[N-1,Y-k) 其中：k=0,X,2X,.....,zX(z=Y/X)
+ *      可以得出该问题的状态转移方程为：F(N,Y)=sigma(F[N-1],Y-k) 其中：k=0,X,2X,.....,zX(z=Y/X)
  */
 public class DP_CoinGroup {
 
@@ -65,7 +67,7 @@ public class DP_CoinGroup {
 
     public static void main(String[] args) {
         int n = 100;
-        int[] coins = {1, 2, 5};
+        int[] coins = {1, 2};
 
         int groupNum = getGroupNum(n, coins);
 
