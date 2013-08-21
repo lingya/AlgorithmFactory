@@ -67,7 +67,7 @@ public class DP_CoinGroup {
 
     public static void main(String[] args) {
         int n = 100;
-        int[] coins = {1, 2};
+        int[] coins = {1, 2, 5};
 
         int groupNum = getGroupNum(n, coins);
 
